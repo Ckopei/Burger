@@ -1,8 +1,8 @@
 var orm = require("../config/orm.js");
 
 var burger = {
-    create: function(cols, vals, cb){
-        orm.insertOne("burgers", cols, vals, function(res){
+    create: function(name, vals, cb){
+        orm.insertOne("burgers", name, vals, function(res){
             cb(res)
         });
     },

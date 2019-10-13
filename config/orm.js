@@ -10,9 +10,8 @@ var orm = {
         })
     },
     insertOne: function(table, name, devouredTorF, cb){
-        var post = {burger_name: name, devoured: devouredTorF}
-        connection.query("INSERT INTO ?? SET ?",
-        [table, post],
+        connection.query("INSERT INTO ?? (burger_name, devoured) VALUES (?,?)",
+        [table, name, devouredTorF],
         function (error, result){
             if (err) throw err;
             cb(result);
@@ -20,7 +19,7 @@ var orm = {
     },
     updateOne: function (table, devouredTorF, condition, cb){
         connection.query("UPDATE ? SET ? WHERE ?",
-        [table, {devoured: devouredTorF}, condition],
+        [table, devouredTorF, condition],
         function(err, result){
             if (err) throw err;
             cb(result);
