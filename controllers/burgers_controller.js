@@ -7,7 +7,7 @@ var burger = require("../models/burger.js");
 router.get("/", function(req, res) {
     burger.all(function(data) {
       var hbsObject = {
-        cats: data
+        burgers: data
       };
       console.log(hbsObject);
       res.render("index", hbsObject);
@@ -23,7 +23,7 @@ router.get("/", function(req, res) {
     });
   });
 
-  router.put("/api/cats/:id", function(req, res) {
+  router.put("/api/burgers/:id", function(req, res) {
     var condition = "id = " + req.params.id;
   
     console.log("condition", condition);
@@ -40,7 +40,7 @@ router.get("/", function(req, res) {
     });
   });
 
-  router.delete("/api/cats/:id", function(req, res) {
+  router.delete("/api/burgers/:id", function(req, res) {
     var condition = "id = " + req.params.id;
   
     cat.delete(condition, function(result) {
@@ -53,4 +53,4 @@ router.get("/", function(req, res) {
     });
   });
 
-  module.exports = reouter;
+  module.exports = router;

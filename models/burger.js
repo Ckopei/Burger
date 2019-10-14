@@ -8,6 +8,7 @@ var burger = {
     },
     all: function(cb) {
         orm.selectAll("burgers", function(res){
+            console.log("yes")
             cb(res);
         });
     },
