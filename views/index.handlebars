@@ -1,21 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
+<h1>burgers!</h1>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-    <link rel="stylesheet" href="../public/assets/css/burger_style.css">
-    <title>Burgers</title>
-</head>
+<h2>burgers that are not devoured!</h2>
 
-<body>
-    {{{ body}}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</body>
+<ul>
+  {{#each burgers}}
+    {{#unless devoured}}
+      {{> burgers/burger-block devoured=true}}
+    {{/unless}}
+  {{/each}}
+</ul>
 
-</html>
+<h2>Burgers that are devoured!</h2>
+
+<ul>
+  {{#each burgers}}
+    {{#if devoured}}
+      {{> burgers/burger-block devoured=false}}
+    {{/if}}
+  {{/each}}
+</ul>
+
+<h2>Add a burger!</h2>
+<form class="create-form">
+
+  <div class="form-group">
+    <label for="bn">Burger name:</label>
+    <input type="text" id="bn" name="name">
+  </div>
+
+  <div class="form-group">
+    <label for="devoured">Devoured?</label><br>
+    <input type="radio" name="devoured" value="1" checked> Devoured<br>
+    <input type="radio" name="devoured" value="0"> Not devoured
+  </div>
+
+  <button type="submit">Add Burger</button>
+</form>
