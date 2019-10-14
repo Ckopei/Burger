@@ -10,24 +10,24 @@ var orm = {
         })
     },
     insertOne: function(table, name, devouredTorF, cb){
-        connection.query("INSERT INTO ?? (burger_name, devoured) VALUES (?,?)",
-        [table, name, devouredTorF],
-        function (error, result){
+        connection.query("INSERT INTO "+table+ " (burger_name, devoured) VALUES (?,?)",
+        [name, devouredTorF],
+        function (err, result){
             if (err) throw err;
             cb(result);
         })
     },
     updateOne: function (table, devouredTorF, condition, cb){
-        connection.query("UPDATE ? SET ? WHERE ?",
-        [table, devouredTorF, condition],
+        connection.query("UPDATE "+table+ " SET "+devouredTorF+" WHERE "+condition,
+        // [table, devouredTorF, condition],
         function(err, result){
             if (err) throw err;
             cb(result);
         })
     },
     delete: function (table, condition, cb){
-        connection.query("DELETE FROM ? WHERE ?",
-        [table, condition],
+        connection.query("DELETE FROM "+table+ " WHERE " +condition,
+        // [table, condition],
         function(err,result){
             if (err) throw err;
             cb(result);
